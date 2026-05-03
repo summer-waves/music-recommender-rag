@@ -24,6 +24,7 @@ layer — every song was scored every time regardless of the user's query.
 ---
 
 ## 🏗️ Architecture Overview
+```
 User Query (natural language)
 ↓
 [ MusicRetriever — retriever.py ]
@@ -41,7 +42,7 @@ Reports pass/fail + confidence score per test
 ↓
 Output: Ranked recommendations with reasoning
 ![System Architecture](assets/architecture.png)
-
+```
 ---
 
 ## ⚙️ Setup Instructions
