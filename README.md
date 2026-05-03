@@ -78,6 +78,7 @@ python -m pytest -v
 ## 💬 Sample Interactions
 
 ### Query 1 — Happy Pop Fan
+```
 **Input:** Query: "upbeat happy pop songs for dancing and summer vibes"
 Profile: pop | happy | energy 0.8
 **Output:**
@@ -143,7 +144,7 @@ Why: genre match (+2.0) | mood match (+1.0) | energy similarity (+1.43)
 Stone Cold by Granite Wave
 Genre: rock | Mood: intense | Energy: 0.85
 Why: genre match (+2.0) | mood match (+1.0) | energy similarity (+1.35)
-
+```
 ---
 
 ## 🔧 Design Decisions
@@ -211,6 +212,7 @@ reasons makes the system far more trustworthy than a black-box ranked list.
 ---
 
 ## 📁 Project Structure
+```
 music-recommender-rag/
 ├── data/
 │   ├── songs.csv                # Original 10-song catalog (Module 3)
@@ -228,7 +230,7 @@ music-recommender-rag/
 ├── README.md
 ├── model_card.md
 └── requirements.txt
-
+```
 ---
 
 ## 🛠️ Built With
