@@ -1,0 +1,31 @@
+title,artist,genre,mood,energy,acousticness,tempo_bpm,valence,danceability,description
+Sunrise City,The Dawnbreakers,pop,happy,0.85,0.2,120,0.9,0.8,An upbeat pop anthem with bright synths and feel-good summer vibes perfect for dancing
+Gym Hero,PowerBeat,pop,energetic,0.9,0.1,140,0.7,0.85,High energy pop track with driving beats and motivational lyrics for working out
+Neon Lights,Synthwave Collective,pop,happy,0.75,0.15,118,0.85,0.78,Catchy pop song with neon 80s inspired synths and a euphoric chorus
+Good Days Only,Sunny Side,pop,happy,0.7,0.25,112,0.88,0.72,Cheerful pop track with acoustic guitar and warm vocals about positive thinking
+Late Night Pop,City Glow,pop,chill,0.55,0.3,100,0.65,0.65,Mellow late night pop with soft beats and dreamy production
+Storm Runner,Voltage,rock,intense,0.95,0.05,160,0.6,0.7,Aggressive rock track with heavy guitars distortion and pounding drums
+Midnight Drive,The Overtones,rock,chill,0.6,0.3,105,0.55,0.6,Laid back rock song with clean guitar riffs and smooth vocals for a night drive
+Broken Roads,Echo Valley,rock,sad,0.5,0.45,95,0.35,0.5,Emotional rock ballad with acoustic guitar and introspective lyrics about loss
+Thunder March,Iron Pulse,rock,intense,0.9,0.1,155,0.5,0.65,Powerful rock anthem with charging riffs and thunderous percussion
+Stone Cold,Granite Wave,rock,intense,0.85,0.08,150,0.45,0.6,Hard hitting rock track with raw energy distorted bass and aggressive vocals
+Spacewalk Thoughts,Lunar Echo,lofi,chill,0.25,0.6,75,0.5,0.4,Dreamy lofi beat with soft piano and ambient space sounds for deep focus
+Rainy Afternoon,Cloud Nine,lofi,chill,0.2,0.7,70,0.45,0.35,Gentle lofi track with rain sounds and mellow guitar perfect for studying
+Café Corner,Bean Street,lofi,chill,0.3,0.65,80,0.55,0.42,Cozy lofi hip hop with warm vinyl crackle and soft piano for relaxing
+Bedroom Thoughts,Pillow Talk,lofi,sad,0.2,0.75,68,0.3,0.3,Melancholic lofi beat with soft keys and nostalgic samples for quiet evenings
+Study Session,Focus Lab,lofi,chill,0.25,0.68,72,0.48,0.38,Clean lofi track designed for deep concentration with minimal distracting elements
+Forest Walk,Nature Beats,acoustic,chill,0.3,0.92,85,0.65,0.45,Peaceful acoustic guitar piece with nature sounds birds and gentle fingerpicking
+Campfire Songs,The Wanderers,acoustic,happy,0.4,0.88,90,0.75,0.5,Warm acoustic folk song with handclaps storytelling lyrics and campfire energy
+Heartstrings,Melody Lane,acoustic,sad,0.25,0.95,78,0.25,0.3,Delicate acoustic ballad with fingerstyle guitar and emotional vocals about heartbreak
+Morning Stretch,Sunrise Folk,acoustic,happy,0.35,0.9,88,0.7,0.48,Uplifting acoustic track with bright picking patterns and gentle vocals for mornings
+Porch Swing,Southern Roots,acoustic,chill,0.3,0.93,82,0.6,0.42,Relaxed acoustic country folk with slide guitar and warm lazy afternoon atmosphere
+Deep Bass Theory,Sub Culture,electronic,energetic,0.88,0.05,130,0.65,0.88,Pulsing electronic track with deep bass drops crisp hi hats and club ready energy
+Circuit Breaker,Data Wave,electronic,intense,0.92,0.02,145,0.55,0.9,Intense electronic banger with distorted synths and relentless four on the floor beats
+Neon Pulse,Future Bass,electronic,happy,0.8,0.1,128,0.8,0.85,Euphoric future bass track with bright leads and uplifting chord progressions
+Midnight Protocol,Binary Code,electronic,chill,0.5,0.2,100,0.5,0.6,Atmospheric electronic music with ambient pads and slow hypnotic rhythms
+Glitch Garden,Pixel Dreams,electronic,chill,0.45,0.25,95,0.55,0.58,Experimental electronic with glitchy textures and lush ambient backgrounds
+Teardrops,Velvet Soul,jazz,sad,0.3,0.7,75,0.2,0.35,Mournful jazz ballad with muted trumpet slow brushed drums and melancholic piano
+Blue Note Evening,The Quartet,jazz,chill,0.35,0.65,88,0.5,0.45,Classic cool jazz with walking bass smooth saxophone and relaxed improvisation
+Uptown Swing,Jazz Cats,jazz,happy,0.65,0.5,110,0.78,0.7,Swinging jazz number with lively horns and infectious groove perfect for a dinner party
+Late Set,Club Jazz,jazz,chill,0.4,0.55,92,0.48,0.5,Late night jazz club feel with soft piano trio and intimate smoky atmosphere
+Brass and Soul,Horn Section,jazz,energetic,0.7,0.4,118,0.72,0.68,High energy jazz funk with powerful brass arrangements and a driving rhythm section

@@ -1,56 +1,165 @@
-# 🎧 Model Card: Music Recommender Simulation
-
-## 1. Model Name
-
-VibeFinder 1.0
+# 🎵 Model Card — Music Recommender RAG
 
 ---
 
-## 2. Intended Use
+## Model Overview
 
-VibeFinder 1.0 suggests songs from a small catalog based on a user's preferred genre, mood, energy level, and acoustic preference. It is designed for classroom exploration of how content-based recommendation systems work — not for real-world deployment. It assumes the user can clearly state their preferences upfront and that those preferences stay constant.
-
----
-
-## 3. How the Model Works
-
-The system looks at each song in the catalog and compares it to what the user told us they like. It awards points for matches: a genre match is worth the most (2 points), a mood match is worth 1 point, and energy closeness adds up to 1.5 points depending on how close the song's energy level is to what the user wants. If the user prefers acoustic music and the song is mostly acoustic, it gets a small bonus too. Every song gets a total score, and the top 5 are returned along with a plain-language explanation of why each one ranked where it did.
-
----
-
-## 4. Data
-
-The catalog contains 10 songs stored in a CSV file. Genres represented include pop, rock, lofi, and electronic. Moods include happy, chill, and intense. The dataset is small and skewed — there are no acoustic genre songs, no jazz, no classical, and no R&B. Most songs lean toward pop and electronic, which means users with those preferences get better results than users with niche tastes. The data reflects a fairly narrow slice of what music actually sounds like across cultures and styles.
+**System Name:** Music Recommender RAG
+**Base Project:** Module 3 — Music Recommender Simulation
+**Version:** 2.0
+**Author:** Marco Ortiz
+**Date:** May 2026
+**Type:** Retrieval-Augmented Generation (RAG) recommendation system
 
 ---
 
-## 5. Strengths
+## Intended Use
 
-The system works well for users whose preferences match the most common genres in the catalog. A happy pop fan or a high-energy rock listener gets clearly differentiated, sensible results. The explanation feature is a genuine strength — every recommendation tells the user exactly why it was chosen, which makes the system transparent and easy to understand. The scoring logic is also simple enough to debug and adjust, which is useful for learning.
+This system is designed to recommend music to a user based on a natural
+language query and a structured taste profile. It is intended for:
 
----
+- Personal music discovery
+- Educational demonstration of RAG pipelines
+- Portfolio demonstration of applied AI system design
 
-## 6. Limitations and Bias
-
-The biggest limitation is the small catalog — with only 10 songs, the same tracks keep appearing across very different profiles. The genre weight of 2.0 is so dominant that it can overshadow a much better mood or energy match from a different genre. The system has no acoustic genre songs at all, so a user who prefers acoustic music never gets a genre match bonus. It also treats all preferences as equally important to all users, with no way to say "I care a lot about mood but barely about genre." This could feel unfair to users whose taste doesn't fit the pop/rock/electronic mold that the dataset was built around.
-
----
-
-## 7. Evaluation
-
-Three distinct user profiles were tested: a Happy Pop Fan (high energy, pop genre), a Chill Acoustic Listener (low energy, acoustic preference), and a High Energy Rock Fan (very high energy, rock genre). For Profile 1, results matched expectations well — genre and mood aligned with the top picks. For Profile 2, results were weaker because no songs matched the "acoustic" genre, so the system fell back on mood and acousticness scores alone. For Profile 3, Storm Runner ranked first as expected, but no songs matched the "intense" mood, which exposed a gap in the dataset. The most surprising finding was that Gym Hero kept appearing in multiple profiles because its high energy made it competitive even when genre and mood didn't match.
+It is **not** intended for:
+- Commercial music streaming integration
+- Real-time recommendation at scale
+- Replacing human music curation
 
 ---
 
-## 8. Future Work
+## How It Works
 
-- Expand the catalog to at least 50 songs with more diverse genres including jazz, classical, R&B, and acoustic
-- Add a diversity rule that prevents the same artist from appearing more than once in the top 5
-- Allow users to weight their own preferences, for example letting someone say mood matters more to them than genre
-- Add tempo range matching so users who want slow or fast songs get better results
+The system follows a three-step RAG pipeline:
+
+1. **Retrieve** — A TF-IDF vectorizer searches a 30-song knowledge base
+   using cosine similarity against the user's natural language query.
+2. **Augment** — The top 10 retrieved songs are converted into Song objects
+   and passed to the scoring engine.
+3. **Generate** — The recommender scores each retrieved song against the
+   user's taste profile (genre, mood, energy, acousticness) and returns
+   the top k recommendations with explanations.
 
 ---
 
-## 9. Personal Reflection
+## Training Data / Knowledge Base
 
-Building this system showed me how much a few simple numbers can shape what someone sees and hears. A weight of 2.0 on genre sounds small, but it means the algorithm will almost always push the same genre to the top regardless of everything else. That is exactly how real apps create filter bubbles — not through some complex conspiracy, but through small scoring decisions made early on that compound over millions of recommendations. The most interesting moment was seeing Gym Hero show up for both the pop fan and the rock fan just because of its energy score. It made me realize that real music taste is way more complicated than any small set of features can capture, and that human curation still matters even when the algorithm seems to be working fine.
+The knowledge base (`data/knowledge_base.csv`) contains 30 manually
+curated songs across 6 genres: pop, rock, lofi, acoustic, electronic,
+and jazz. Each song includes a natural language description used for
+TF-IDF retrieval, plus structured attributes used for scoring.
+
+**Limitations of the knowledge base:**
+- 30 songs is a very small catalog — real systems use millions of tracks
+- All songs and descriptions were written manually — no real artist data
+- Genre distribution is equal (5 songs per genre) which may not reflect
+  real listening patterns
+
+---
+
+## Performance
+
+| Metric | Result |
+|---|---|
+| Evaluator pass rate | 6/6 (100%) |
+| Average confidence score | 0.7154 |
+| Pytest pass rate | 8/8 (100%) |
+| Genres covered | 6 (pop, rock, lofi, acoustic, electronic, jazz) |
+
+---
+
+## Limitations and Biases
+
+**Genre dominance bias:**
+The scoring system weights genre matches at +2.0 points, which is higher
+than mood (+1.0) or energy (+1.5 max). This means the system will almost
+always recommend songs from the user's preferred genre, even when a song
+from a different genre might be a better emotional or energy fit. This
+mirrors real-world filter bubble problems in recommendation systems.
+
+**Keyword dependency:**
+TF-IDF only matches on exact or near-exact keywords. A query like
+"something to cry to" will not reliably retrieve sad songs because
+"cry" does not appear in the song descriptions. A semantic embedding
+model would handle this better.
+
+**Cold start:**
+The system requires the user to explicitly state their favorite genre,
+mood, and energy level. It cannot infer preferences from listening
+history or behavior.
+
+**Small catalog:**
+With only 30 songs, results can repeat across different profiles,
+especially for less specific queries.
+
+---
+
+## Ethical Considerations
+
+**Could this system be misused?**
+In its current form the system poses minimal risk — it only recommends
+fictional songs from a static catalog. However, if extended to real
+platforms, recommendation systems can reinforce filter bubbles by
+repeatedly pushing users toward the same genre or artist, limiting
+exposure to diverse music and cultures.
+
+**Mitigation strategies:**
+- Add a diversity penalty so the same artist cannot appear more than
+  once in the top recommendations
+- Introduce a random exploration factor that occasionally recommends
+  outside the user's stated preferences
+- Make scoring weights transparent and user-adjustable
+
+---
+
+## Testing and Reliability
+
+The system includes two layers of reliability testing:
+
+**Automated evaluator (`src/evaluator.py`):**
+Runs 6 predefined profiles and checks that the top recommendation
+matches the expected genre and mood. Reports confidence scores based
+on retrieval overlap and average retrieval score.
+
+**Pytest suite (`tests/test_retriever.py`):**
+8 unit tests covering result count, required fields, score range,
+score ordering, profile-based retrieval, and edge cases.
+
+**What surprised me during testing:**
+Even with only 30 songs, the TF-IDF retriever was highly accurate
+for descriptive queries. The biggest surprise was how well the
+confidence scores clustered around 0.70 — the system was consistently
+uncertain at roughly the same level across all genres, which suggests
+the retrieval quality is uniform rather than strong for some genres
+and weak for others.
+
+---
+
+## AI Collaboration Reflection
+
+**Helpful suggestion:**
+Claude suggested using TF-IDF cosine similarity as the retrieval
+engine instead of a neural embedding model. This was genuinely helpful
+because it meant the entire RAG pipeline could run locally with no API
+key and no external dependencies — just scikit-learn. It simplified
+setup significantly without sacrificing retrieval quality for this
+scale of project.
+
+**Flawed suggestion:**
+Early in the build, Claude suggested using `top_k` as the argument
+name when calling `recommender.recommend()`. This caused a TypeError
+because the existing recommender used `k` not `top_k`. The fix was
+simple once the actual source code was checked, but it was a good
+reminder that AI suggestions need to be verified against the actual
+codebase rather than assumed to be correct.
+
+---
+
+## Future Improvements
+
+- Replace TF-IDF with sentence-transformers for semantic retrieval
+- Expand knowledge base to 200+ real songs using a public music API
+- Add a Streamlit UI for interactive query input
+- Make scoring weights configurable by the user
+- Add collaborative filtering on top of content-based scoring
