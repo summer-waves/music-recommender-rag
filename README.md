@@ -77,8 +77,8 @@ python -m pytest -v
 
 ## 💬 Sample Interactions
 
-### Query 1 — Happy Pop Fan
 ```
+### Query 1 — Happy Pop Fan
 **Input:** Query: "upbeat happy pop songs for dancing and summer vibes"
 Profile: pop | happy | energy 0.8
 **Output:**
