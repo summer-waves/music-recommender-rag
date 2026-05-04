@@ -6,9 +6,8 @@ Music Recommender Simulation, this system extends the original content-based
 scoring engine with a TF-IDF retrieval layer that searches a 30-song knowledge
 base before generating personalized recommendations.
 
-## 📹 Demo Walkthrough
-<!-- Add your Loom video link here after recording -->
-_Loom video coming soon_
+## 📹 Loom Video Walkthrough
+Link: https://www.loom.com/share/c4059e95012547cb9691ee8db3d307c1
 
 ---
 
